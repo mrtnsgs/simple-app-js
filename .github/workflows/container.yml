@@ -10,8 +10,10 @@ jobs:
         image: mrtnsgs/node-api:1.0
         ports:
           - 3001:3000
-    container:
-      image: node:13.5.0-alpine3.10
+      mongo:
+        image: mongo
+        ports:
+          - "27017:27017"
     steps:
       - name: Post a user
         run: "curl -X POST http://localhost:3001/api/user -H 'Content-Type: application/json' -d '{\"username\": \"hello\",\"address\": \"dwded\"}'"
